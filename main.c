@@ -1,5 +1,8 @@
 #include <stdio.h>
+#include "game.h"
 int main(void){
-    printf("Dots and boxes\n");
+    print_empty_board();
+    
+
     return 0;
 }
