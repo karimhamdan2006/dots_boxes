@@ -39,7 +39,7 @@ void add_test_lines(void){
             printf(".");
             if (col<BOX_COLS){
                 if(horizontal[row][col]==1){
-                    printf("-");
+                    printf("--");
                 } else {
                     printf(" ");
                 }
@@ -47,7 +47,7 @@ void add_test_lines(void){
         }
         printf("\n");
         if(row<BOX_ROWS){
-            printf(" ");
+            printf("  ");
             for(col=0;col<DOT_COLS;col++){
                 if(vertical[row][col]==1){
                     printf("|");
