@@ -63,3 +63,35 @@ void get_move(int *r1,int *c1, int *r2, int *c2){
     printf("Enter second dot row and coloumn");
     scanf("%d %d",r2,c2);
 }
+int is_valid_move(int r1, int c1, int r2,int c2){
+    if(r1<0||r1>=DOT_ROWS||r2<0||r2>=DOT_ROWS){
+        return 0;
+    }
+    if(c1<0||c1>=DOT_COLS|| c2<0||c2>=DOT_COLS){
+        return 0;
+    }
+    if(r1==r2 &&(c1==c2+1|| c2==c1+1)){
+        return 1;
+    }
+    if(c1==c2 &&(r1==r2+1|| r2==r1+1)){
+        return 1;
+    }
+    return 0;
+}
+void apply_move(int r1,int c1,int r2, int c2){
+    if(r1==r2){
+        if(c1>c2){
+            int temp= c1;
+            c1=c2;
+            c2=temp;
+        }
+        horizontal[r1][c1]=1;
+    } else if (c1==c2){
+        if(r1>r2){
+            int temp = r1;
+            r1=r2;
+            r2=temp;
+        }
+        vertical[r1][c1]=1;
+    }
+}
