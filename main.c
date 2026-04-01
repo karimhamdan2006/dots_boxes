@@ -2,6 +2,7 @@
 #include "game.h"
 int main(void){
     int r1,c1,r2,c2;
+    int claimed;
     init_board();
     add_test_lines();
     print_board();
@@ -12,7 +13,8 @@ if(!is_valid_move(r1,c1,r2,c2)){
         printf("line is already drawn.\n");
     }else {
         apply_move(r1,c1,r2,c2);
-        printf("move is accepted.\n");
+        claimed= claim_completed_boxes('A');
+        printf("move is accepted. Boxes claimed: %d\n", claimed);
     }
 
 print_board();

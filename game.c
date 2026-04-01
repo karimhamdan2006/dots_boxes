@@ -2,6 +2,7 @@
 #include "game.h"
 static int horizontal[DOT_ROWS][BOX_COLS];
 static int vertical[BOX_ROWS][DOT_COLS];
+static char boxes[BOX_ROWS][BOX_COLS];
 void init_board(void){
     int r,c;
     for(r=0; r< DOT_ROWS;r++){
@@ -14,12 +15,16 @@ void init_board(void){
             vertical[r][c]=0;
         }
     }
+    for( r=0; r<BOX_ROWS;r++){
+        for(c=0;c<BOX_COLS;c++){
+            boxes[r][c]=' ';
+        }
+    }
 }
 void add_test_lines(void){
     horizontal[0][0]= 1;
-    horizontal[0][1]= 1;
+    horizontal[1][0]= 1;
     vertical[0][0]=1;
-    vertical[0][DOT_COLS-1]= 1;
 }
  void print_board(void){
     int row, col;
@@ -49,7 +54,7 @@ void add_test_lines(void){
                 } else{
                     printf(" ");
                 } if(col<BOX_COLS){
-                    printf(" ");
+                    printf("%c",boxes[row][col]);
                 }
             }
             printf("\n");
@@ -113,4 +118,33 @@ void apply_move(int r1,int c1,int r2, int c2){
         }
         vertical[r1][c1]=1;
     }
+}
+int box_is_complete(int box_row, int box_col){
+    if( horizontal[box_row][box_col]==0){
+        return 0;
+    }
+    if(horizontal[box_row+1][box_col]==0){
+        return 0;
+    }
+    if(vertical[box_row][box_col]==0){
+        return 0;
+    }
+    if(vertical[box_row][box_col+1]==0){
+        return 0;
+    }
+    return 1;
+}
+int claim_completed_boxes(char player){
+    int row,col;
+    int claimed=0;
+    for(row=0;row<BOX_ROWS;row++){
+        for(col=0; col<BOX_COLS;col++){
+            if(boxes[row][col]== ' ' && box_is_complete(row,col)){
+                boxes[row][col]= player;
+
+                claimed++;
+            }
+        }
+    }
+    return claimed;
 }
