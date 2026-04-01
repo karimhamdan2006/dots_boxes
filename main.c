@@ -17,11 +17,11 @@ int main(void){
             break;
         }
         if(!is_valid_move(r1,c1,r2,c2)){
-            printf("invalid move.\n");
+            printf("invalid move. Dots must be adjacent and within the board\n");
             continue;
         }
         if(line_already_drawn(r1,c1,r2,c2)){
-            printf("That line is already drawn.\n");
+            printf("That line is has already been drawn. try again.\n");
             continue;
         }
         apply_move(r1,c1,r2,c2);
@@ -31,18 +31,23 @@ int main(void){
         }else {
             scoreB +=claimed;
         }
-        printf("move accepted. Boxes claimed: %d\n", claimed);
+        printf("move accepted. Boxes claimed this turn: %d\n", claimed);
         if(claimed==0){
             if(current_player=='A'){
                 current_player='B';
             } else {
                 current_player='A';
+            } } else {
+                printf("player %c get another turn.\n", current_player);
             }
-        }
+        
         if(scoreA + scoreB == BOX_ROWS*BOX_COLS){
+            printf("all boxes have been claimed");
             break;
+
         }
     }
+    
     print_board();
     printf("final score -A: %d, B: %d\n", scoreA, scoreB);
     if(scoreA>scoreB){
@@ -53,4 +58,5 @@ int main(void){
         printf("It's a TIE\n");
     }
     return 0;
+
 }
