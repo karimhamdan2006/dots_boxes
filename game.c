@@ -63,10 +63,8 @@ void add_test_lines(void){
 
  }
 void get_move(int *r1,int *c1, int *r2, int *c2){
-    printf("Enter first dot row and coloumn");
-    scanf("%d %d", r1, c1);
-    printf("Enter second dot row and coloumn");
-    scanf("%d %d",r2,c2);
+    printf("Enter row and coloumn of first dot, then row and coloumn of second dot: ");
+    scanf("%d %d %d %d", r1, c1, r2, c2);
 }
 int is_valid_move(int r1, int c1, int r2,int c2){
     if(r1<0||r1>=DOT_ROWS||r2<0||r2>=DOT_ROWS){
