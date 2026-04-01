@@ -7,5 +7,6 @@
 void init_board(void);
 void add_test_lines(void);
 void print_board(void);
+void get_move(int *r1, int *c1, int *r2, int *c2);
 #endif 
 

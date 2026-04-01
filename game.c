@@ -55,4 +55,11 @@ void add_test_lines(void){
             printf("\n");
                 }
     }
+
  }
+void get_move(int *r1,int *c1, int *r2, int *c2){
+    printf("Enter first dot row and coloumn");
+    scanf("%d %d", r1, c1);
+    printf("Enter second dot row and coloumn");
+    scanf("%d %d",r2,c2);
+}
