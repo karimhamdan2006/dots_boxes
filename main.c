@@ -10,7 +10,12 @@ int main(void){
         print_board();
         printf("Score - A: %d, B: %d\n", scoreA,scoreB);
         printf("Player %c's turn\n",current_player);
+        printf("Enter -1 -1 as the first dot to quit.\n");
         get_move(&r1,&c1,&r2,&c2);
+        if(r1==-1 && c1==-1){
+            printf("Game ended by early by user.\n");
+            break;
+        }
         if(!is_valid_move(r1,c1,r2,c2)){
             printf("invalid move.\n");
             continue;
