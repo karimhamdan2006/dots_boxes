@@ -6,11 +6,10 @@ int main(void){
     int scoreA=0, scoreB=0;
     char current_player= 'A';
     init_board();
-    add_test_lines();
     while(1){
         print_board();
         printf("Score - A: %d, B: %d\n", scoreA,scoreB);
-        printf("Player %c's turn\n");
+        printf("Player %c's turn\n",current_player);
         get_move(&r1,&c1,&r2,&c2);
         if(!is_valid_move(r1,c1,r2,c2)){
             printf("invalid move.\n");
