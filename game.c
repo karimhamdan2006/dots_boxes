@@ -78,6 +78,25 @@ int is_valid_move(int r1, int c1, int r2,int c2){
     }
     return 0;
 }
+int line_already_drawn(int r1, int c1, int r2, int c2){
+    if(r1==r2){
+        if(c1>c2){
+            int temp= c1;
+            c1=c2;
+            c2=temp;
+        }
+        return horizontal[r1][c1]==1;
+    }
+    if (c1==c2){
+        if(r1>r2){
+            int temp=r1;
+            r1=r2;
+            r2=temp;
+        }
+        return vertical[r1][c1]==1;
+    }
+    return 0;
+}
 void apply_move(int r1,int c1,int r2, int c2){
     if(r1==r2){
         if(c1>c2){
