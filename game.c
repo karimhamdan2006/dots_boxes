@@ -15,7 +15,13 @@ void init_board(void){
         }
     }
 }
- void print_empty_board(void){
+void add_test_lines(void){
+    horizontal[0][0]= 1;
+    horizontal[0][1]= 1;
+    vertical[0][0]=1;
+    vertical[0][DOT_COLS-1]= 1;
+}
+ void print_board(void){
     int row, col;
     printf(" ");
     for(col = 0 ; col < DOT_COLS; col++){
@@ -26,6 +32,13 @@ void init_board(void){
         printf("%d", row);
         for (col=0; col< DOT_COLS; col++){
             printf(".");
+            if (col<BOX_COLS){
+                if(horizontal[row][col]==1){
+                    printf("-");
+                } else {
+                    printf(" ");
+                }
+            }
         }
         printf("\n");
     }
