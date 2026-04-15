@@ -157,3 +157,14 @@ int choose_game_mode(void){
     return mode;
 
 }
+int moves_remaining(void){
+    int row,col;
+    for(row=0;row<DOT_ROWS;row++){
+        for(col=0;col<BOX_COLS;col++){
+            if(horizontal[row][col]==0){
+                return 1;
+            }
+        }
+    }
+    return 0;
+}

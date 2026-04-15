@@ -8,6 +8,7 @@ int main(void){
     char current_player= 'A';
     mode = choose_game_mode();
     init_board();
+    printf("Moves remainting at the start: %d\n", moves_remaining());
     while(1){
         print_board();
         printf("Score - A: %d, B: %d\n", scoreA,scoreB);
