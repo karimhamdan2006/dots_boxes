@@ -4,11 +4,20 @@ int main(void){
     int r1,c1,r2,c2;
     int claimed;
     int scoreA=0, scoreB=0;
+    int mode;
     char current_player= 'A';
+    mode = choose_game_mode();
     init_board();
     while(1){
         print_board();
         printf("Score - A: %d, B: %d\n", scoreA,scoreB);
+        if(mode==1){
+            printf("Human vs Human\n");
+        } else if (mode==2){
+            printf("Human vs Bot\n");
+        } else {
+            printf("No mode or wrong mode selected, defaulting to Human vs Human");
+        }
         printf("Player %c's turn\n",current_player);
         printf("Enter -1 -1 0 0 to quit.\n");
         get_move(&r1,&c1,&r2,&c2);

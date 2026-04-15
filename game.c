@@ -60,8 +60,9 @@ void add_test_lines(void){
             printf("\n");
                 }
     }
+}
 
- }
+ 
 void get_move(int *r1,int *c1, int *r2, int *c2){
     printf("Enter row and coloumn of first dot, then row and coloumn of second dot: ");
     scanf("%d %d %d %d", r1, c1, r2, c2);
@@ -145,4 +146,14 @@ int claim_completed_boxes(char player){
         }
     }
     return claimed;
+}
+int choose_game_mode(void){
+    int mode;
+    printf("choose game mode/n");
+    printf("1. Human vs Human");
+    printf("2. Human vs Bot");
+    printf("Enter choice: ");
+    scanf("%d", &mode);
+    return mode;
+
 }
