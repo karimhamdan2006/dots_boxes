@@ -14,6 +14,7 @@ void apply_move(int r1,int c1,int r2, int c2);
 int box_is_complete(int box_row, int box_col);
 int claim_completed_boxes(char player);
 int moves_remaining(void);
+int find_first_horizontal_move(int *r1, int *c1, int *r2, int *c2);
 
 #endif 
 

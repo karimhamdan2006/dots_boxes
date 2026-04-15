@@ -2,6 +2,7 @@
 #include "game.h"
 int main(void){
     int r1,c1,r2,c2;
+    int bot_r1,bot_c1,bot_r2,bot_c2;
     int claimed;
     int scoreA=0, scoreB=0;
     int mode;
@@ -9,6 +10,9 @@ int main(void){
     mode = choose_game_mode();
     init_board();
     printf("Moves remainting at the start: %d\n", moves_remaining());
+    if(find_first_horizontal_move(&bot_r1,&bot_c1,&bot_r2,&bot_c2)){
+        printf("First horizontal move found: (%d,%d) to (%d,%d)\n", bot_r1,bot_c1,bot_r2,bot_c2);
+    }
     while(1){
         print_board();
         printf("Score - A: %d, B: %d\n", scoreA,scoreB);
