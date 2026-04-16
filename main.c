@@ -16,13 +16,13 @@ int main(void){
         print_board();
         printf("Score - A: %d, B: %d\n", scoreA,scoreB);
         if(mode==1){
-            printf(" Human vs Human\n");
+            printf(" Mode: Human vs Human\n");
         } else if (mode==2){
-            printf(" Human vs Bot\n");
+            printf(" Mode: Human vs Bot\n");
         } else {
             printf("No mode or wrong mode selected, defaulting to Human vs Human");
         }
-        printf(" Player %c's turn.\n", current_player);
+        printf(" Current turn: Player %c\n", current_player);
         if(mode==2 && current_player=='B'){
             if(find_box_closing_move(&r1,&c1,&r2,&c2)){
                 printf(" Bot chooses box-closing move: %d %d %d %d\n", r1,c1,r2,c2);
@@ -41,8 +41,8 @@ int main(void){
                 break;
             }
             } else {
-                printf(" Enter row and coloumn of first dot, then row and coloumn of second dot\n");
-                printf(" Enter -1 -1 0 0 to quit ");
+                printf(" Enter move as: row1 col1 row2 col2\n");
+                printf(" Enter -1 -1 0 0 to quit\n");
                 get_move(&r1,&c1,&r2,&c2);
             }
         
