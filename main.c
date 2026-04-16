@@ -8,9 +8,6 @@ int main(void){
     char current_player= 'A';
     mode = choose_game_mode();
     init_board();
-    apply_move(1,0,1,1);
-    apply_move(2,0,2,1);
-    apply_move(1,0,2,0);
     printf("risky test move result: %d\n", move_creates_third_side(1,1,2,1));
     while(1){
         print_board();
