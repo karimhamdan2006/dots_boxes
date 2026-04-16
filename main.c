@@ -2,26 +2,12 @@
 #include "game.h"
 int main(void){
     int r1,c1,r2,c2;
-    int bot_r1,bot_c1,bot_r2,bot_c2;
     int claimed;
     int scoreA=0, scoreB=0;
     int mode;
     char current_player= 'A';
     mode = choose_game_mode();
     init_board();
-    apply_move(0,0,0,1);
-    apply_move(0,0,1,0);
-    apply_move(1,0,1,1);
-    printf("Moves remainting at the start: %d\n", moves_remaining());
-    if(find_first_horizontal_move(&bot_r1,&bot_c1,&bot_r2,&bot_c2)){
-        printf("First horizontal move found: (%d,%d) to (%d,%d)\n", bot_r1,bot_c1,bot_r2,bot_c2);
-    }
-    if( find_first_vertical_move(&bot_r1,&bot_c1,&bot_r2,&bot_c2)){
-        printf("First horizontal move found (%d,%d) to (%d,%d)\n", bot_r1,bot_c1,bot_r2,bot_c2);
-    }
-if(find_box_closing_move(&bot_r1,&bot_c1,&bot_r2,&bot_c2)){
-    printf("Box-closing move found: (%d,%d) to (%d,%d)\n",bot_r1,bot_c1,bot_r2,bot_c2);
-}
     while(1){
         print_board();
         printf("Score - A: %d, B: %d\n", scoreA,scoreB);
@@ -34,6 +20,9 @@ if(find_box_closing_move(&bot_r1,&bot_c1,&bot_r2,&bot_c2)){
         }
         printf("Player %c's turn./n", current_player);
         if(mode==2 && current_player=='B'){
+            if(find_box_closing_move(&r1,&c1,&r2,&c2)){
+                printf("Bot chooses box-closing move: %d %d %d %d\n", r1,c1,r2,c2);
+            }
             if(find_first_horizontal_move(&r1,&c1,&r2,&c2)){
                 printf("Bot chooses: %d %d %d %d\n", r1, c1,r2,c2);
             } else if(find_first_vertical_move(&r1,&c1,&r2,&c2)) {
