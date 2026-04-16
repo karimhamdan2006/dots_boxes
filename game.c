@@ -149,9 +149,9 @@ int claim_completed_boxes(char player){
 }
 int choose_game_mode(void){
     int mode;
-    printf("choose game mode/n");
-    printf("1. Human vs Human");
-    printf("2. Human vs Bot");
+    printf("choose game mode\n");
+    printf(" Enter 1 for Human vs Human");
+    printf(" Enter 2 for Human vs Bot");
     printf("Enter choice: ");
     scanf("%d", &mode);
     return mode;
@@ -263,4 +263,35 @@ int find_box_closing_move(int *r1, int *c1, int *r2, int *c2){
         }
     }
     return 0;
+}
+int move_creates_third_side(int r1, int c1, int r2, int c2){
+    int sides;
+    int risky=0;
+    if(r1==r2){
+        if(c1>c2){
+            int temp=c1;
+            c1=c2;
+            c2=temp;
+        }
+        horizontal[r1][c1]=1;
+        if(r1>0){
+            sides=0;
+            if(horizontal[r1-1][c1]==1) sides++;
+            if(horizontal[r1][c1]==1)sides++;
+            if(vertical[r1-1][c1]==1)sides++;
+            if(vertical[r1-1][c1+1]==1)sides++;
+            if(sides==3) risky=1;
+        }
+        if(r1<BOX_ROWS){
+        sides=0;
+        if(horizontal[r1+1][c1]==1)sides++;
+        if(horizontal[r1][c1]==1)sides++;
+        if(vertical[r1][c1]==1)sides++;
+        if(vertical[r1][c1 +1]==1)sides++;
+        if(sides==3) risky=1;
+
+        }
+        horizontal[r1][c1]=0;
+    }
+    return risky;
 }

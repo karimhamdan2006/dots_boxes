@@ -18,5 +18,5 @@ int find_first_horizontal_move(int *r1, int *c1, int *r2, int *c2);
 int find_first_vertical_move(int *r1, int *c1, int *r2, int *c2);
 int move_completes_box(int r1, int c1, int r2, int c2);
 int find_box_closing_move(int *r1, int *c1, int *r2, int *c2);
+int move_creates_third_side(int r1, int c1, int r2, int c2);
 #endif 
-

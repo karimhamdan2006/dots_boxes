@@ -8,45 +8,49 @@ int main(void){
     char current_player= 'A';
     mode = choose_game_mode();
     init_board();
+    apply_move(1,0,1,1);
+    apply_move(2,0,2,1);
+    apply_move(1,0,2,0);
+    printf("risky test move result: %d\n", move_creates_third_side(1,1,2,1));
     while(1){
         print_board();
         printf("Score - A: %d, B: %d\n", scoreA,scoreB);
         if(mode==1){
-            printf("Human vs Human\n");
+            printf(" Human vs Human\n");
         } else if (mode==2){
-            printf("Human vs Bot\n");
+            printf(" Human vs Bot\n");
         } else {
             printf("No mode or wrong mode selected, defaulting to Human vs Human");
         }
-        printf("Player %c's turn./n", current_player);
+        printf(" Player %c's turn.\n", current_player);
         if(mode==2 && current_player=='B'){
             if(find_box_closing_move(&r1,&c1,&r2,&c2)){
-                printf("Bot chooses box-closing move: %d %d %d %d\n", r1,c1,r2,c2);
+                printf(" Bot chooses box-closing move: %d %d %d %d\n", r1,c1,r2,c2);
             }
             if(find_first_horizontal_move(&r1,&c1,&r2,&c2)){
-                printf("Bot chooses: %d %d %d %d\n", r1, c1,r2,c2);
+                printf(" Bot chooses: %d %d %d %d\n", r1, c1,r2,c2);
             } else if(find_first_vertical_move(&r1,&c1,&r2,&c2)) {
-                printf("Bot chooses: %d %d %d %d\n", r1,c1,r2,c2);
+                printf(" Bot chooses: %d %d %d %d\n", r1,c1,r2,c2);
             }else{
-                printf("Bot could not find a move.\n");
+                printf(" Bot could not find a move.\n");
                 break;
             }
             } else {
-                printf("Enter row and coloumn of first dot, then row and coloumn of second dot\n");
-                printf("Enter -1 -1 0 0 to quit");
+                printf(" Enter row and coloumn of first dot, then row and coloumn of second dot\n");
+                printf(" Enter -1 -1 0 0 to quit ");
                 get_move(&r1,&c1,&r2,&c2);
             }
         
         if(r1==-1 && c1==-1){
-            printf("Game ended by early by user.\n");
+            printf(" Game ended by early by user.\n");
             break;
         }
         if(!is_valid_move(r1,c1,r2,c2)){
-            printf("invalid move. Dots must be adjacent and within the board\n");
+            printf(" invalid move. Dots must be adjacent and within the board\n");
             continue;
         }
         if(line_already_drawn(r1,c1,r2,c2)){
-            printf("That line is has already been drawn. try again.\n");
+            printf(" That line is has already been drawn. try again.\n");
             continue;
         }
         apply_move(r1,c1,r2,c2);
@@ -56,7 +60,7 @@ int main(void){
         }else {
             scoreB +=claimed;
         }
-        printf("move accepted. Boxes claimed this turn: %d\n", claimed);
+        printf(" move accepted. Boxes claimed this turn: %d\n", claimed);
         if(claimed==0){
             if(current_player=='A'){
                 current_player='B';
@@ -67,7 +71,7 @@ int main(void){
             }
         
         if(scoreA + scoreB == BOX_ROWS*BOX_COLS){
-            printf("all boxes have been claimed");
+            printf(" all boxes have been claimed");
             break;
 
         }
@@ -76,11 +80,11 @@ int main(void){
     print_board();
     printf("final score -A: %d, B: %d\n", scoreA, scoreB);
     if(scoreA>scoreB){
-        printf("player A WINS!\n");
+        printf(" player A WINS!\n");
     } else if(scoreB>scoreA){
-        printf("player B WINS!\n");
+        printf(" player B WINS!\n");
     } else {
-        printf("It's a TIE\n");
+        printf(" It's a TIE\n");
     }
     return 0;
 
