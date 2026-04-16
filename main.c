@@ -27,10 +27,15 @@ int main(void){
             if(find_box_closing_move(&r1,&c1,&r2,&c2)){
                 printf(" Bot chooses box-closing move: %d %d %d %d\n", r1,c1,r2,c2);
             }
-            if(find_first_horizontal_move(&r1,&c1,&r2,&c2)){
-                printf(" Bot chooses: %d %d %d %d\n", r1, c1,r2,c2);
-            } else if(find_first_vertical_move(&r1,&c1,&r2,&c2)) {
-                printf(" Bot chooses: %d %d %d %d\n", r1,c1,r2,c2);
+            if(find_first_safe_horizontal_move(&r1,&c1,&r2,&c2)){
+                printf(" Bot chooses safe horizontal move: %d %d %d %d\n", r1, c1,r2,c2);
+            } else if(find_first_safe_vertical_move(&r1,&c1,&r2,&c2)) {
+                printf(" Bot chooses safe vertical move: %d %d %d %d\n", r1,c1,r2,c2);
+            }else if(find_first_horizontal_move(&r1,&c1,&r2,&c2)){
+                printf("Bot chooses horizontal move: %d %d %d %d\n", r1,c1,r2,c2);
+            }else if(find_first_vertical_move(&r1,&c1,&r2,&c2)){
+                printf("Bot chooses vertical move: %d %d %d %d\n", r1,c1,r2,c2);
+                
             }else{
                 printf(" Bot could not find a move.\n");
                 break;
