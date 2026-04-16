@@ -9,6 +9,9 @@ int main(void){
     char current_player= 'A';
     mode = choose_game_mode();
     init_board();
+    apply_move(0,0,0,1);
+    apply_move(0,0,1,0);
+    apply_move(1,0,1,1);
     printf("Moves remainting at the start: %d\n", moves_remaining());
     if(find_first_horizontal_move(&bot_r1,&bot_c1,&bot_r2,&bot_c2)){
         printf("First horizontal move found: (%d,%d) to (%d,%d)\n", bot_r1,bot_c1,bot_r2,bot_c2);
