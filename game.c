@@ -198,3 +198,38 @@ int find_first_vertical_move(int *r1, int *c1, int *r2, int *c2){
 }
     return 0;
 }
+int move_completes_box(int r1, int c1, int r2, int c2){
+int completed=0;
+if(r1==r2){
+    if(c1>c2){
+        int temp=c1;
+        c1=c2;
+        c2=temp;
+    }
+    horizontal[r1][c1]=1;
+    if(r1>0 && box_is_complete(r1-1,c1)){
+        completed=1;
+    }
+    if(r1<BOX_ROWS && box_is_complete(r1,c1)){
+        completed=1;
+    }
+    horizontal[r1][c1]=0;
+}
+else if(c1==c2){
+    if(r1>r2){
+        int temp=r1;
+        r1=r2;
+        r2=temp;
+    }
+    vertical[r1][c1]=1;
+    if(c1>0 && box_is_complete(r1, c1-1)){
+        completed=1;
+    }
+    if(c1<BOX_COLS && box_is_complete(r1,c1)){
+        completed=1;
+    }
+    vertical[r1][c1]=0;
+
+}
+return completed;
+}
