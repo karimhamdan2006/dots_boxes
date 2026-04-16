@@ -16,6 +16,9 @@ int main(void){
     if( find_first_vertical_move(&bot_r1,&bot_c1,&bot_r2,&bot_c2)){
         printf("First horizontal move found (%d,%d) to (%d,%d)\n", bot_r1,bot_c1,bot_r2,bot_c2);
     }
+if(find_box_closing_move(&bot_r1,&bot_c1,&bot_r2,&bot_c2)){
+    printf("Box-closing move found: (%d,%d) to (%d,%d)\n",bot_r1,bot_c1,bot_r2,bot_c2);
+}
     while(1){
         print_board();
         printf("Score - A: %d, B: %d\n", scoreA,scoreB);
