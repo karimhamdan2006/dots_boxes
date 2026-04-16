@@ -312,3 +312,20 @@ int find_first_safe_horizontal_move(int *r1, int *c1, int *r2, int *c2) {
     }
     return 0;
 }
+int find_first_safe_vertical_move(int *r1, int *c1, int *r2, int *c2){
+ int row, col;
+ for(row=0;row<BOX_ROWS;row++){
+    for(col=0;col<DOT_COLS;col++){
+        if(vertical[row][col]==0){
+            if(!move_creates_third_side(row,col,row+1,col)){
+                *r1=row;
+                *c1=col;
+                *r2=row+1;
+                *c2=col;
+                return 1;
+            }
+        }
+    }
+ }   
+ return 0;
+}
