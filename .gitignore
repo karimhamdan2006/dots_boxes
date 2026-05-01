@@ -1,0 +1,11 @@
+# Binaries
+server
+client
+game
+# Object files
+*.o
+# Temporary files
+*.swp
+.*.swp
+*~
+
